@@ -355,6 +355,25 @@ li.todo .box{
   text-transform:uppercase;
   letter-spacing:.08em;
 }
+.aura-gallery img{cursor:zoom-in}
+.lightbox{
+  position:fixed; inset:0; z-index:9999;
+  background:rgba(0,0,0,.92);
+  display:none; align-items:center; justify-content:center;
+  padding:24px; cursor:zoom-out;
+}
+.lightbox.active{display:flex}
+.lightbox img{
+  max-width:92vw; max-height:88vh;
+  border-radius:12px;
+  box-shadow:0 0 0 1px rgba(255,255,255,.1), 0 20px 60px rgba(0,0,0,.6);
+}
+.lightbox-close{
+  position:absolute; top:18px; right:22px;
+  font-size:28px; color:#aaa; cursor:pointer;
+  font-family:ui-sans-serif;
+}
+.lightbox-close:hover{color:#fff}
 </style>
 </head>
 <body>
@@ -481,5 +500,26 @@ li.todo .box{
       Made with care in Alsace, France — 2026
     </footer>
   </div>
+
+<div class="lightbox" id="lightbox" onclick="this.classList.remove('active')">
+  <span class="lightbox-close">×</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+  document.querySelectorAll('.aura-gallery img').forEach(img=>{
+    img.addEventListener('click', e=>{
+      e.stopPropagation();
+      const lb=document.getElementById('lightbox');
+      const lbImg=document.getElementById('lightbox-img');
+      lbImg.src=img.src;
+      lbImg.alt=img.alt;
+      lb.classList.add('active');
+    });
+  });
+  document.addEventListener('keydown', e=>{
+    if(e.key==='Escape') document.getElementById('lightbox').classList.remove('active');
+  });
+</script>
 </body>
 </html>
