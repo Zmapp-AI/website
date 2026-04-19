@@ -243,6 +243,42 @@ footer{
 }
 a{color:var(--accent); text-decoration:none}
 a:hover{text-decoration:underline}
+.aura-gallery{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin:22px 0 8px;
+}
+.aura-gallery figure{
+  margin:0;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  overflow:hidden;
+  transition:transform .2s, border-color .2s;
+}
+.aura-gallery figure:hover{
+  transform:translateY(-3px);
+  border-color:rgba(0,255,136,.35);
+}
+.aura-gallery img{
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:16/10;
+  object-fit:cover;
+  background:#000;
+}
+.aura-gallery figcaption{
+  padding:8px 10px;
+  font-size:12.5px;
+  color:var(--muted);
+  border-top:1px solid var(--border);
+  text-align:center;
+}
+@media (max-width:720px){
+  .aura-gallery{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
@@ -266,10 +302,24 @@ a:hover{text-decoration:underline}
         <p class="en">Inspired by ZMap and nmap, Zmapp-AI is a collective dedicated to open-source AI applied to security, mapping, and system resilience.</p>
       </section>
 
-<section id="Projet AURA">
-  <h2>Pourquoi <span class="en-inline">/ Why</span></h2>
+      <section id="aura">
+        <h2><span>AURA</span><span class="en-title">/ AURA</span></h2>
         <p class="fr">AURA est un système I.A. 100% portable, 100% sans installateur, 100% fonctionnel, contournant les prérequis GPU actuels.</p>
         <p class="en">AURA is a 100% portable, 100% installer-free, 100% functional AI system that bypasses current GPU requirements.</p>
+        <div class="aura-gallery">
+          <figure>
+            <img src="images/aura-1.png" alt="AURA - interface portable">
+            <figcaption>Lancement instantané</figcaption>
+          </figure>
+          <figure>
+            <img src="images/aura-2.png" alt="AURA - fonctionnement sans GPU">
+            <figcaption>Mode CPU only</figcaption>
+          </figure>
+          <figure>
+            <img src="images/aura-3.png" alt="AURA - architecture modulaire">
+            <figcaption>Architecture</figcaption>
+          </figure>
+        </div>
       </section>
 
       <div class="divider"></div>
